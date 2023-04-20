@@ -1,14 +1,14 @@
 import styles from './Button.module.scss';
 
-const Button = ({ action, time, children }) => {
+const Button = ({ action, children }) => {
 
   const handleAction = e => {
     e.preventDefault();
-    action(time);
+    action();
   };
 
   return (
-    <button className={ styles.button } onClick={ handleAction } >
+    <button className={ styles.button } onClick={ handleAction }>
       { children }
     </button>
   );
