@@ -1,1 +1,28 @@
-.app {}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  background-color: #2F3542;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  width: calc(100vw - 30px);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

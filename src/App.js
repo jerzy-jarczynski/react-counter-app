@@ -7,41 +7,39 @@ const App = () => {
 
   const [time, setTime] = useState(0);
   const [diff, setDiff] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
+  const [lastDiff, setLastDiff] = useState(0);
   const [running, setRunning] = useState(false);
   const [meantime, setMeantime] = useState(null);
 
   const startCounter = () => {
-    if (time === 0) {
-      setTime(
-        new Date().getTime()
-      );
-    } else  {
-      setTime(currentTime + diff);
-    }
-
+    setTime(
+      new Date().getTime()
+    );
+    setLastDiff(
+      prevValue => prevValue + diff
+    );
     setRunning(true);
   };
 
   const stopCounter = () => {
     setRunning(false);
-    setCurrentTime(time);
   };
 
   const resetCounter = () => {
     setTime(0);
     setDiff(0);
+    setLastDiff(0);
   };
 
   const clockTick = () => {
-    setDiff(
+    setDiff (
       new Date().getTime() - time
     );
   };
 
   useEffect(() => {
 
-    if (running) {      
+    if (running) {
       setMeantime(
         setInterval(clockTick, 42)
       );
@@ -54,16 +52,16 @@ const App = () => {
   }, [running]);
 
   return (
-    <div className={ styles.app }>
-      <Counter time={ diff } />
-      <div>
-        <Button action={ startCounter }>
+    <div className={styles.app}>
+      <Counter time={diff + lastDiff} />
+      <div className={styles.buttons}>
+        <Button action={startCounter} active={!running} >
           START
         </Button>
-        <Button action={ stopCounter }>
+        <Button action={stopCounter} active={running}>
           STOP
         </Button>
-        <Button action={ resetCounter }>
+        <Button action={resetCounter} active={running}>
           RESET
         </Button>
       </div>

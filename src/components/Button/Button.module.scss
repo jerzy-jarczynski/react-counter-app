@@ -1,1 +1,40 @@
-.button {}
+@import url('https://fonts.googleapis.com/css?family=Poppins:400');
+
+.button {
+  font-family: 'Poppins', sans-serif;
+  background: #26de81;
+  border: 0;
+  color: #fff;
+  margin: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 50px;
+  font-size: 20px;
+  padding: 0 12px;
+
+  &:hover {
+    background: darken(#26de81, 5%);
+  }
+
+  &.danger {
+    background: #e1644e;
+
+    &:hover {
+      background: darken(#e1644e, 5%);
+    }
+  }
+
+  &.transparent {
+    background: transparent;
+
+    &:hover {
+      color: darken(#fff, 20%);
+    }
+  }
+}

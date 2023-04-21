@@ -1,14 +1,26 @@
 import styles from './Button.module.scss';
 
-const Button = ({ action, children }) => {
+const Button = ({ action, active, children }) => {
 
   const handleAction = e => {
     e.preventDefault();
-    action();
+
+    if (children === 'START') {
+      if (active) {
+        action();
+      } 
+    } else if (children === 'RESET') {
+      if (!active) {
+        action();
+      }
+    } else {
+      action();
+    }
+    
   };
 
   return (
-    <button className={ styles.button } onClick={ handleAction }>
+    <button className={ styles.button } onClick={ handleAction } >
       { children }
     </button>
   );
