@@ -5,6 +5,8 @@ const Button = ({ action, active, children }) => {
   const handleAction = e => {
     e.preventDefault();
 
+    console.log(children, active);
+
     if (children === 'START') {
       if (active) {
         action();
